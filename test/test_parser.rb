@@ -28,6 +28,41 @@ class TestParser < Minitest::Test
     assert_equal tree, @parser.parse(s)
   end
 
+  def test_simple_indentation
+    tree = n(nil, n('foo', n('bar')))
+    s = <<~END
+    foo
+      bar
+    END
+    assert_equal tree, @parser.parse(s)
+  end
+
+  def test_usual_indentation
+    tree = n(nil, n('foo1', n('foo2', n('foo3'))), n('bar1', n('bar2', n('bar3'))), n('baz1', n('baz2', n('baz3'))))
+    s = <<~END
+    foo1
+      foo2
+        foo3
+    bar1
+      bar2
+        bar3
+    baz1
+      baz2
+        baz3
+    END
+    assert_equal tree, @parser.parse(s)
+  end
+
+  def test_spaces_in_line
+    tree = n(nil, n('foo and bar', n('bar and baz', n('baz and foo'))))
+    s = <<~END
+    foo and bar
+      bar and baz
+        baz and foo
+    END
+    assert_equal tree, @parser.parse(s)
+  end
+
   protected
 
   def n *args
