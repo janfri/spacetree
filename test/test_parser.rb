@@ -63,4 +63,16 @@ class TestParser < Minitest::Test
     assert_equal tree, @parser.parse(s)
   end
 
+  def test_converting_line
+    tree = n(nil, n(%i(foo bar)), n(%i(bar baz)))
+    s = <<~END
+    foo bar
+    bar baz
+    END
+    res = @parser.parse(s) do |line|
+      line.split.map &:to_sym
+    end
+    assert_equal tree, res
+  end
+
 end

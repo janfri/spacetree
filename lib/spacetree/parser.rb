@@ -3,11 +3,11 @@ module Spacetree
 
   class Parser
 
-    def parse s
+    def parse s, &blk
       root = Node.new
       @indent_map = {-1 => root}
       s.chomp.split(/\n/).each do |line|
-        generate_node line
+        generate_node line, &blk
       end
       root
     end
@@ -18,6 +18,7 @@ module Spacetree
       if line =~ /(^ *)([^ ].*)$/
         indent = $1.size
         line = $2
+        line = yield line if block_given?
         parent = search_parent_node indent
         new_node = Node.new line
         @indent_map[indent] = new_node
