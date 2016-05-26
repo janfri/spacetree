@@ -1,9 +1,9 @@
 # -- encoding: utf-8 --
-require 'minitest/autorun'
-require 'spacetree'
+require_relative 'helper'
 
 class TestParser < Minitest::Test
 
+  include Helper
   include Spacetree
 
   def setup
@@ -61,12 +61,6 @@ class TestParser < Minitest::Test
         baz and foo
     END
     assert_equal tree, @parser.parse(s)
-  end
-
-  protected
-
-  def n *args
-    Node.new *args
   end
 
 end
