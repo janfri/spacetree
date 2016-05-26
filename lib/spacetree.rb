@@ -6,4 +6,8 @@ module Spacetree
   autoload :Node, 'spacetree/node'
   autoload :Parser, 'spacetree/parser'
 
+  def self.parse s, &blk
+    Parser.new.parse s, &blk
+  end
+
 end
