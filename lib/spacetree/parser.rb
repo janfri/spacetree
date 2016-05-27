@@ -1,8 +1,12 @@
 # -- encoding: utf-8 --
 module Spacetree
 
+  # Parser to parse a text file indented by spaces to a tree structure
   class Parser
 
+    # Do parsing
+    # @s String to parse
+    # @blk if block given each line without the starting spaces is yielded
     def parse s, &blk
       root = Node.new
       @indent_map = {-1 => root}

@@ -1,12 +1,15 @@
 # -- encoding: utf-8 --
 module Spacetree
 
+  # Represent a node respectively a tree
   class Node
 
     include Enumerable
 
     attr_accessor :value, :children
 
+    # @param value value of the node
+    # @children array of nodes wich represent the children of this node
     def initialize value=nil, *children
       @value = value
       @children = children
@@ -31,6 +34,10 @@ module Spacetree
       end
     end
 
+    # Generate a formatted string representation of a node and its children
+    # recursively
+    # @param indent Count of spaces to indent a level deeper
+    # @param level level of indentation
     def emit indent: 2, level: 0
       res = []
       if value.nil?
