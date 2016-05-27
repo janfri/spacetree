@@ -17,8 +17,11 @@ Parsing it:
     require 'spacetree'
     parser = Spacetree::Parser.new
     tree = parser.parse File.read('tree.txt')
-    p tree.value # => "foo"
-    p tree.map(&:value) # => ["bar", "baz"]
+    # tree is root node
+    tree.value # => nil
+    tree.children.map(&:value) # => ["foo"]
+    tree.children.map(&:children).flatten.map(&:value) # => ["bar", "baz"]
+
 
 Emitting a tree as indented text:
 
