@@ -15,12 +15,12 @@ Given a text file tree.txt
 Parsing it:
 
     require 'spacetree'
-    parser = Spcaetree::Parser.new
+    parser = Spacetree::Parser.new
     tree = parser.parse File.read('tree.txt')
     p tree.value # => "foo"
     p tree.map(&:value) # => ["bar", "baz"]
 
-Emitting a tree to a text:
+Emitting a tree as indented text:
 
     puts tree.emit
 
