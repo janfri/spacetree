@@ -31,6 +31,22 @@ module Spacetree
       end
     end
 
+    def emit indent: 2, level: 0
+      res = []
+      if value.nil?
+        children.each {|c| res << c.emit(indent: indent, level: level)}
+      else
+        spaces = ' ' * indent * level
+        res << (spaces << value.to_s)
+        children.each {|c| res << c.emit(indent: indent, level: level+1)}
+      end
+      res.join("\n")
+    end
+
+    def to_s
+      emit
+    end
+
   end
 
 end
