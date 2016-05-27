@@ -7,10 +7,16 @@ module Spacetree
   autoload :Node, 'spacetree/node'
   autoload :Parser, 'spacetree/parser'
 
-
   # Do parsing @see Parser#parse
   def self.parse s, &blk
     Parser.new.parse s, &blk
+  end
+
+  # Generate a formatted string representation of a node and its children
+  # recursively
+  # @see Node#emit
+  def self.emit node
+    node.emit
   end
 
 end
