@@ -2,7 +2,7 @@
 # Generate a tree structure from a text file indented by spaces.
 module Spacetree
 
-  VERSION = '1.0.0'
+  VERSION = '1.0.1'
 
   autoload :Node, 'spacetree/node'
   autoload :Parser, 'spacetree/parser'
