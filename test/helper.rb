@@ -1,6 +1,6 @@
 # -- encoding: utf-8 --
 require 'minitest/autorun'
-require 'spacetree'
+require_relative '../lib/spacetree'
 
 module Helper
 
