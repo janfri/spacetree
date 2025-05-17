@@ -1,4 +1,4 @@
-# -- encoding: utf-8 --
+# encoding: utf-8
 # Generate a tree structure from a text file indented by spaces.
 module Spacetree
 

@@ -1,4 +1,4 @@
-# -- encoding: utf-8 --
+# encoding: utf-8
 module Spacetree
 
   # Represent a node respectively a tree

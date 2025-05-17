@@ -1,4 +1,4 @@
-# -- encoding: utf-8 --
+# encoding: utf-8
 module Spacetree
 
   # Parser to parse a text file indented by spaces to a tree structure
